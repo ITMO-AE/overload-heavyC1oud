@@ -1,27 +1,18 @@
 #include <iostream>
+#include <sstream>
+#include "rational.h"
+
+
 using namespace std;
 
-class Rational {
-public:
-    Rational() {}
-
-    Rational(int numerator, int denominator) { }
-
-    int Numerator() const {}
-
-    int Denominator() const {}
-
-private:
-
-};
 
 int main() {
-   
+
     // проверка работы интерфейса класса ======================================
 
     {
         const Rational r(3, 10);
-        if (r.Numerator() != 3 || r.Denominator() != 10) {
+        if (r.numerator() != 3 || r.denominator() != 10) {
             cout << "Rational(3, 10) != 3/10" << endl;
             return 1;
         }
@@ -29,7 +20,7 @@ int main() {
 
     {
         const Rational r(8, 12);
-        if (r.Numerator() != 2 || r.Denominator() != 3) {
+        if (r.numerator() != 2 || r.denominator() != 3) {
             cout << "Rational(8, 12) != 2/3" << endl;
             return 2;
         }
@@ -37,7 +28,7 @@ int main() {
 
     {
         const Rational r(-4, 6);
-        if (r.Numerator() != -2 || r.Denominator() != 3) {
+        if (r.numerator() != -2 || r.denominator() != 3) {
             cout << "Rational(-4, 6) != -2/3" << endl;
             return 3;
         }
@@ -45,7 +36,7 @@ int main() {
 
     {
         const Rational r(4, -6);
-        if (r.Numerator() != -2 || r.Denominator() != 3) {
+        if (r.numerator() != -2 || r.denominator() != 3) {
             cout << "Rational(4, -6) != -2/3" << endl;
             return 3;
         }
@@ -53,7 +44,7 @@ int main() {
 
     {
         const Rational r(0, 15);
-        if (r.Numerator() != 0 || r.Denominator() != 1) {
+        if (r.numerator() != 0 || r.denominator() != 1) {
             cout << "Rational(0, 15) != 0/1" << endl;
             return 4;
         }
@@ -61,7 +52,7 @@ int main() {
 
     {
         const Rational defaultConstructed;
-        if (defaultConstructed.Numerator() != 0 || defaultConstructed.Denominator() != 1) {
+        if (defaultConstructed.numerator() != 0 || defaultConstructed.denominator() != 1) {
             cout << "Rational() != 0/1" << endl;
             return 5;
         }
@@ -173,6 +164,7 @@ int main() {
             cout << "Read from empty stream shouldn't change arguments: " << r1 << " " << r2 << endl;
             return 4;
         }
+
     }
 
     //end проверка работы operator>> operator<<  ==============================
@@ -180,4 +172,5 @@ int main() {
 
     cout << "OK" << endl;
     return 0;
+
 }
